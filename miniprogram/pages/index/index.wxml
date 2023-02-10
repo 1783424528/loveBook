@@ -1,0 +1,42 @@
+<!--pages/index/index.wxml-->
+<view class="page_index">
+  <view class="top">
+	  <view class="search_list">
+      <view class="search_bar">
+        <image src="../../images/search_input.png" mode="" class="search_img"/>
+        <text class="search_text">搜索</text>
+      </view>
+    </view>
+  </view>
+  <view class="container">
+	  <view class="banner">
+      <swiper indicator-dots="false"
+        autoplay="false" interval="2000" duration="500">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+           <image src="{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="main_user">
+      <view class="main_item">
+        <image src="../../images/getBook.png" mode=""/>
+        <text class="big_text">记录送礼</text>
+        <view class="btn_small">
+        </view>
+        <text>记录收礼的便捷导航</text>
+      </view>
+      <view class="main_item">
+        <image src="../../images/sendBook.png" mode=""/>
+        <text class="big_text">记录送礼</text>
+        <view class="btn_small" style="background-color: #1296db;">
+        </view>
+        <text>记录送礼的便捷导航</text>
+      </view>
+    </view>
+  </view>
+  <view class="nav_tab">
+    
+  </view>
+</view>

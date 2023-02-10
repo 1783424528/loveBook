@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "礼簿",
+	"onReachBottomDistance": 10,
+	"backgroundTextStyle": "light",
+	"enablePullDownRefresh": true,
+	"usingComponents": {
+	}
+  }
