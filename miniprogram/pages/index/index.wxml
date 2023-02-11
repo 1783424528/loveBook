@@ -2,7 +2,7 @@
 <view class="page_index">
   <view class="top">
 	  <view class="search_list">
-      <view class="search_bar">
+      <view class="search_bar" bindtap="toSearchBar">
         <image src="../../images/search_input.png" mode="" class="search_img"/>
         <text class="search_text">搜索</text>
       </view>
@@ -20,7 +20,7 @@
       </swiper>
     </view>
     <view class="main_user">
-      <view class="main_item">
+      <view class="main_item" bindtap="click">
         <image src="../../images/getBook.png" mode=""/>
         <text class="big_text">记录送礼</text>
         <view class="btn_small">

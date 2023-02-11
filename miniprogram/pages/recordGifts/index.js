@@ -1,11 +1,18 @@
-// pages/index/index.js
+// pages/recordGifts/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        background: ['../../images/1.webp', '../../images/2.webp', '../../images/3.webp'],
+       tab_index:1
+    },
+
+    changeTab(e){
+       console.log(e.target.dataset.index);
+       this.setData({
+           tab_index:e.target.dataset.index
+       })
     },
 
     /**
@@ -62,15 +69,5 @@ Page({
      */
     onShareAppMessage() {
 
-    },
-    click(){
-        wx.navigateTo({
-            url: '/pages/recordGifts/index',
-        })
-    },
-    toSearchBar(){
-        wx.navigateTo({
-            url: '/pages/homeSearchList/index',
-        })
     }
 })

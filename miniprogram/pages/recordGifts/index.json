@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "送礼记录",
+	"onReachBottomDistance": 10,
+	"backgroundTextStyle": "light",
+	"enablePullDownRefresh": true,
+	"usingComponents": {
+		"form-gift":"/components/form-gift/index"
+	}
+  }

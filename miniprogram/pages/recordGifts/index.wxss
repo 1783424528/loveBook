@@ -1,0 +1,26 @@
+/* pages/recordGifts/index.wxss */
+.tab_top {
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    padding:24rpx 6rpx;
+}
+.tab_top .tab_items {
+    width: 46%;
+    height: 60rpx;
+    text-align: center;
+    color: red;
+    border: 1px solid red;
+}
+.tab_top .tab_left {
+    border-top-left-radius: 24rpx;
+    border-bottom-left-radius: 24rpx;
+}
+.tab_top .tab_right {
+    border-top-right-radius: 24rpx;
+    border-bottom-right-radius: 24rpx;
+}
+.tab_top .tab_active {
+    background-color: red;
+    color: #fff;
+}

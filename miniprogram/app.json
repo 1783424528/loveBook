@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/usercenter/index",
-    "pages/giftBook/index"
+    "pages/giftBook/index",
+    "pages/recordGifts/index",
+    "pages/homeSearchList/index"
   ],
   "tabBar": {
     "color": "#666666",

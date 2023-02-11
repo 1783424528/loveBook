@@ -1,0 +1,33 @@
+<view class="page">
+	<view class="header">
+	<view class="exit" >
+		<image class="exitPic" src="../usercenter/img/exit.png"></image>
+		<view style="margin-top: 25rpx;">退出</view>
+	</view>
+	</view>
+	<view class="mid" >
+		<view>
+			<image class="share" src="../usercenter/img/share.png"></image>
+			<view>
+				好友分享
+			</view>
+		</view>
+		<view >
+			<image class="help" bindtap="toHelp" src="../usercenter/img/help.png"></image>
+			<view>
+				帮助中心
+			</view>
+		</view>
+		<view class="advice">
+			<view >
+				<image class="help" src="../usercenter/img/advice.png"></image>
+				<view style="white-space: nowrap; margin-left: -10rpx;">
+					反馈建议
+				</view>
+			</view>
+		</view>
+	</view>
+		<view class="footer">
+
+		</view>
+	</view>

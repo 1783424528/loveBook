@@ -1,0 +1,50 @@
+/* page/myCenter/index.wxss */
+.mid{
+/* border: black 1rpx solid; */
+height: 180rpx;
+position: relative;
+bottom: 50rpx;
+width: 95%;
+margin-left: 2.5%;
+display: flex;
+border-radius: 20rpx;
+justify-content: space-around;
+background-color: white;
+font-size: 22rpx;
+color: #515151;
+box-shadow:  0px 6px 22px 12px rgba(5,14,28,0.08);
+}
+.header{
+background-color: red;
+height: 400rpx;
+}
+.footer{
+
+}
+.advice{
+	height: 70rpx;
+	width: 70rpx;
+	/* margin-top:25rpx; */
+}
+.help{
+	height: 70rpx;
+	width: 70rpx;
+	margin-top:35rpx;
+
+}
+.share{
+height: 70rpx;
+width: 70rpx;
+margin-top:35rpx;
+
+}
+.exit{
+font-size: 30rpx;
+color: #515151;
+display: flex;
+}
+.exitPic{
+	margin:20rpx 8rpx 0 10rpx;
+	height: 50rpx;
+	width: 50rpx;
+}

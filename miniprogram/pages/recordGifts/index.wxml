@@ -1,0 +1,17 @@
+<!--pages/recordGifts/index.wxml-->
+<view class="tab_top"> 
+    <view class="tab_left tab_items {{tab_index==1?'tab_active':''}}" data-index="1" bindtap="changeTab">
+        单笔
+    </view>
+    <view class="tab_right tab_items {{tab_index==2?'tab_active':''}}" data-index="2" bindtap="changeTab">
+        多笔
+    </view>
+</view>
+<view class="contain">
+    <view wx:if="{{tab_index==1}}">
+        <form-gift></form-gift>
+    </view>
+    <view wx:if="{{tab_index==2}}">
+        <form-gift></form-gift>
+    </view>
+</view>

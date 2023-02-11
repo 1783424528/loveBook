@@ -1,0 +1,8 @@
+<view>
+    <view class="form_item">
+        <view>
+            礼簿
+        </view>
+        <input class="weui-input" placeholder="最大输入长度为10" />
+    </view>
+</view>
