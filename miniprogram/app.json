@@ -4,8 +4,7 @@
     "pages/usercenter/index",
     "pages/giftBook/index"
   ],
-    "tabBar": {
-    "custom": true,
+  "tabBar": {
     "color": "#666666",
     "selectedColor": "#FF5F15",
     "backgroundColor": "#ffffff",
@@ -13,15 +12,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath":"images/home.png",
+        "selectedIconPath":"images/home_select.png"
       },
       {
         "pagePath": "pages/giftBook/index",
-        "text": "礼簿"
+        "text": "礼簿",
+        "iconPath":"images/giftBook.png",
+        "selectedIconPath":"images/giftBook_select.png"
       },
       {
         "pagePath": "pages/usercenter/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath":"images/my.png",
+        "selectedIconPath":"images/my_select.png"
       }
     ]
   },

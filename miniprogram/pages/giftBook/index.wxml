@@ -1,2 +1,7 @@
-<!--pages/giftBook/index.wxml-->
-<text>pages/giftBook/index.wxml</text>
+<navigation-bar tab-data="{{tabData}}" bind:changeNaviIndex="getSelectTab" select-tab="{{selectTab}}"></navigation-bar>
+<view wx:if="{{selectTab==1}}">
+    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}"></love-book>
+</view>
+<view wx:if="{{selectTab==2}}">
+    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}"></love-book>
+</view>

@@ -1,0 +1,10 @@
+Component({
+	properties:{
+		selectTab:{
+			type:Number
+		},
+		bookList:{
+			type:Array
+		}
+	}
+})

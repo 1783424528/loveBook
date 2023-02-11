@@ -1,8 +1,10 @@
 {
-	"navigationBarTitleText": "礼簿",
+	"navigationStyle": "custom",
 	"onReachBottomDistance": 10,
 	"backgroundTextStyle": "light",
 	"enablePullDownRefresh": true,
 	"usingComponents": {
+		"navigation-bar": "/components/navigation-bar/navigation-bar",
+		"love-book":"/components/love-book/index"
 	}
   }
