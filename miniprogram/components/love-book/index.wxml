@@ -1,9 +1,9 @@
 <view class="loveBook" style="justify-content: {{bookList.length==0?'start':'space-between'}};">
-    <view class="bookTab only_book">
+    <view class="bookTab only_book" bindtap="toCreateBook">
         <image src="../../images/addBook.png" mode="" class="icon_add"/>
         <text>{{selectTab==1?'收礼礼簿':'送礼礼簿'}}</text>
     </view>
-    <view class="bookTab data_list" wx:for="{{bookList}}">
+    <view class="bookTab data_list" wx:for="{{bookList}}" data-index="{{index}}" data-bookid="{{item.id}}" bindtap="toSearchBook" wx:key="index">
         <text class="book_title">{{item.title}}</text>
         <text wx:if="{{item.isSys}}" class="book_text">系统默认的{{selectTab==1?'收':'送'}}礼礼簿</text>
         <text class="book_text" style="margin-bottom: {{!item.isSys?'36rpx':'0rpx'}};">共{{item.number}}笔</text>

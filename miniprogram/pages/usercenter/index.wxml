@@ -7,24 +7,28 @@
 	</view>
 	<view class="mid" >
 		<view>
+		<button open-type="share" class="share-btn">
 			<image class="share" src="../usercenter/img/share.png"></image>
 			<view>
 				好友分享
 			</view>
+		</button>
 		</view>
-		<view >
-			<image class="help" bindtap="toHelp" src="../usercenter/img/help.png"></image>
+		<view   bindtap='toHlep'>
+			<image class="help" src="../usercenter/img/help.png"></image>
 			<view>
 				帮助中心
 			</view>
 		</view>
 		<view class="advice">
+		<button class="advice-btn" open-type="feedback">
 			<view >
 				<image class="help" src="../usercenter/img/advice.png"></image>
-				<view style="white-space: nowrap; margin-left: -10rpx;">
+				<view style="white-space: nowrap; margin-left: -10rpx; position:fixed">
 					反馈建议
 				</view>
 			</view>
+		</button>
 		</view>
 	</view>
 		<view class="footer">

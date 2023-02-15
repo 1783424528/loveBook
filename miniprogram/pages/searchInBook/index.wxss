@@ -1,0 +1,77 @@
+/* pages/searchInBook/index.wxss */
+.search {
+    width: 100%;
+    height: 100rpx;
+    margin: 20rpx auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    position: relative;
+}
+.search .weui-input {
+    height: 80rpx;
+    width: 88%;
+    background-color: #fff;
+    padding-left: 60rpx;
+}
+.search .search_center {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search .search_center .search_img {
+    width: 32rpx;
+    height: 32rpx;
+    vertical-align: middle;
+}
+.search .left {
+    left: 4%;
+}
+.search_item {
+    display: flex;
+    width: 85%;
+    height: 120rpx;
+    background-color: #fff;
+    margin: 20rpx auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 36rpx;
+}
+.search_body {
+    background-color: #f5f6fa;
+}
+.search_item text {
+    /* height: 20rpx; */
+}
+.search_item .item_left {
+    display: flex;
+    flex-direction: column;
+}
+.search_item .item_desc {
+    font-size: 22rpx;
+    margin-top: 16rpx;
+}
+.search_item .item_red {
+    font-size: 36rpx;
+    color:red
+}
+.item_length {
+    width: 100%;
+    text-align: center;
+    margin-top: 40rpx;
+}
+.add_record {
+    position: fixed;
+    width: 100rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    bottom: 100rpx;
+    right: 100rpx;
+    border-radius: 50rpx;
+    color: #fff;
+    font-size: 60rpx;
+    background-color: red;
+}

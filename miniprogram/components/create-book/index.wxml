@@ -1,0 +1,35 @@
+<view>
+    <view class="form_item">
+        <view class="form_label">
+            礼簿
+        </view>
+        <input class="weui-input" bindinput="bindChangeName" value="{{createName}}" placeholder="请输入" />
+    </view>
+    <view class="form_item">
+        <view class="form_label">
+            日期
+        </view>
+        <picker mode="date" value="{{createDate}}" start="2015-09-01" end="2030-12-12" bindchange="bindChangeDate">
+            <view class="picker">
+                {{createDate}}
+            </view>
+        </picker>
+    </view>
+    <view class="form_item_textarea">
+        <view class="form_label text_area">
+            备注
+        </view>
+        <textarea bindinput="bindChangeDesc" value="{{createDesc}}" maxlength='200' placeholder="自动变高" />
+        <view class="form_desNum">
+            {{descLength}}/200
+        </view>
+    </view>
+    <view class="cover">
+        
+    </view>
+    <cover-view class="fixed">
+        <cover-view class="add_button_fix" bindtap="toPageInto">
+        保存
+        </cover-view>
+    </cover-view>
+</view>

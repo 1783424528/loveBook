@@ -1,6 +1,6 @@
 <!-- 自定义顶部栏 -->
 <view class="nav-bar" style="height:{{navBarHeight}}px;">
-    <view class="tab" data-type="{{item.type}}" bindtap="selecttap" wx:for="{{tabData}}" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight+index*72}}px; top:{{menuTop}}px; background-color:{{item.type==selectTab?item.bgcolor:'#fff'}}; color:{{item.type==selectTab?item.color:'#959CBA'}};">
+    <view class="tab" data-type="{{item.type}}" bindtap="selecttap" wx:key="index" wx:for="{{tabData}}" style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight+index*72}}px; top:{{menuTop}}px; background-color:{{item.type==selectTab?item.bgcolor:'#fff'}}; color:{{item.type==selectTab?item.color:'#959CBA'}};">
 	{{item.title}}
 	</view>
 </view>

@@ -2,11 +2,11 @@
 	<view class="search-container">
 		<view class="search-left">
 			<image style="height: 36rpx;width: 36rpx;" src="../homeSearchList/images/search.png" />
-			<input type="text"  bindinput="bindKeyInput" placeholder="输入姓名，手机" value="{{inputValue}}" />
+			<input type="text"  bindinput="bindKeyInput" placeholder="输入姓名，手机" class="input-class" placeholder-class="input-placeholder" value="{{inputValue}}" />
 		</view>
-		<view bindtap="cleanValue">
+		<!-- <view bindtap="cleanValue">
 			<image style="height: 36rpx;width: 36rpx;position: absolute; left: 80%; top:2%" catchtap="cleanValue" src="../homeSearchList/images/cancel.png"></image>
-		</view>
+		</view> -->
 		<view class="search-right" bindtap="toHome">
 			取消
 		</view>
@@ -15,18 +15,21 @@
 	<view wx:if="{{inputValue != ''}}" class="under-search">
 		搜索“ {{inputValue}}”
 	</view>
-	<view class="search-list" wx:if="{{inputValue != ''}}">
+	<view class="search-list" wx:if="{{inputValue != ''}}" wx:for="giftList" wx:for-index="key"  wx:for-item="value">
 		<view class="search-list-title">
 			<!-- <image></image> -->
-			<view style="font-size: 30rpx;display: inline-block;margin-left: 8px;">默认收礼</view>
+			<view style="display: none;" class="dave">
+				value={{value}}|||key= {{key}}
+			</view>
+			<view style="font-size: 30rpx;display: inline-block;margin-left: 8px;">{{value}}</view>
 			<view style="display: inline-block ; float: right;font-size: 26rpx;padding-right:5px">
 				查看更多>
 			</view>
 		</view>
-		<view class="search-list-detail">
+		<view class="search-list-detail" wx:for="{{uesrList}}">
 			<!-- <view style="">头像</view> -->
 			<image src="../homeSearchList/images/user.png" class="user-icon" />
-			<view class="search-list-detail-mid" wx:for="{{uesrList}}">
+			<view class="search-list-detail-mid" >
 				<view style="display: flex;">
 					<view class="name">{{item.name}}</view>
 					<view class="tel"> {{item.tel}}</view>

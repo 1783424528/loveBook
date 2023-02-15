@@ -1,0 +1,27 @@
+<!--pages/searchInBook/index.wxml-->
+<view>
+    <view class="search">
+        <input class="weui-input" :placeholder="{{placeholder}}" value="{{searchValue}}" bindfocus="searchFocus" bindblur="searchBlur" bindinput="changeValue"/>
+        <view class="search_center {{isLeft?'left':''}}">
+            <image src="../../images/search.png" mode="" class="search_img"/>
+            <text wx:if="{{!isLeft}}">搜索</text>
+        </view>
+    </view>
+    <view class="search_body">
+        <view wx:for="{{searchItem}}" data-recordid="{{item.recordId}}" bindtap="toRecordHas" wx:key="index" class="search_item">
+            <view class="item_left">
+                <text>{{item.giftName}}</text>
+                <text class="item_desc">{{item.giftDesc||'暂无备注'}}</text>
+            </view>
+            <view class="item_red">
+                {{item.giftMoney}}
+            </view>
+        </view>
+        <view class="item_length">
+            {{searchItem.length}}条记录
+        </view>
+    </view>
+    <view class="add_record" bindtap="addRecord">
+        +
+    </view>
+</view>

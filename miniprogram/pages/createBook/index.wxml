@@ -1,0 +1,13 @@
+<view>
+    <create-book
+        create-name="{{createName}}"
+        create-date="{{createDate}}"
+        create-desc="{{createDesc}}"
+        desc-length="{{descLength}}"
+        tab="{{tab}}"
+        bind:changeCreateName="changeCreateName"
+        bind:changeCreateDate="changeCreateDate"
+        bind:changeCreateDesc="changeCreateDesc"
+    >
+    </create-book>
+</view>

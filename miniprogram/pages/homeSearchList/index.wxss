@@ -43,9 +43,10 @@
 }
 
 .under-search {
-	font-size: 12px;
+	font-size: 28rpx;
 	margin-left: 2.5%;
 	margin-top: 10px;
+	color: #707070;
 }
 
 .search-list {
@@ -84,8 +85,13 @@
 }
 .name{
 	font-size: 30rpx;
-
 }
 .tel{
 margin:5rpx 0 0 10rpx
+}
+.input-placeholder{
+	font-size: 30rpx;
+}
+.input-class{
+	font-size: 30rpx;
 }

@@ -30,6 +30,7 @@
 .banner {
 	width: calc(100% - 20px);
 	height: 360rpx;
+	margin: 20rpx 0;
 }
 .main_user {
 	width: calc(100% - 20rpx);
@@ -66,4 +67,10 @@
 .main_user .main_item text {
 	font-size: 28rpx;
 	color: #959CBA;
+}
+.banner_img {
+	width: 100%;
+}
+.banner_swi {
+	height: 100%;
 }

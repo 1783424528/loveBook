@@ -68,6 +68,11 @@ Page({
             url: '/pages/recordGifts/index',
         })
     },
+    clickSend(){
+        wx.navigateTo({
+            url: '/pages/sendGifts/index',
+        })
+    },
     toSearchBar(){
         wx.navigateTo({
             url: '/pages/homeSearchList/index',

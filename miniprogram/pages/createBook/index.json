@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "创建礼簿",
+    "onReachBottomDistance": 10,
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "create-book":"/components/create-book/index"
+    }
+  }

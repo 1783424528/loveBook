@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "收礼记录",
+    "navigationBarTitleText": "送礼记录",
 	"onReachBottomDistance": 10,
 	"backgroundTextStyle": "light",
 	"enablePullDownRefresh": true,

@@ -1,0 +1,43 @@
+<view>
+    <view class="form_item">
+        <view class="form_label">
+            礼簿
+        </view>
+        <picker bindchange="bindIndexOtherChange" range-key="name" value="{{giftIndexOther}}" range="{{giftBookList}}">
+            <view class="picker">
+                {{giftBookList[giftIndexOther].name}}
+            </view>
+        </picker>
+    </view>
+    <view class="form_item">
+        <view class="form_label">
+            日期
+        </view>
+        <picker mode="date" value="{{giftDateOther}}" start="2015-09-01" end="2030-12-12" bindchange="bindDateOtherChange">
+            <view class="picker">
+                {{giftDateOther}}
+            </view>
+        </picker>
+    </view>
+    <view class="text_line">
+        多笔记录
+    </view>
+    <view class="record_user">
+        <view class="line_record" wx:for="{{giftOther}}" wx:key="index">
+            <input class="weui-input" bindinput="bindOtherChange" placeholder="姓名" value="{{item.name}}" data-index="{{index}}" data-title="name"/>
+            <input class="weui-input" bindinput="bindOtherChange" placeholder="金额" value="{{item.money}}" data-index="{{index}}" type="digit" data-title="money"/>
+            <input class="weui-input" bindinput="bindOtherChange" placeholder="备注" value="{{item.desc}}" data-index="{{index}}" data-title="desc"/>
+        </view>
+    </view>
+    <view class="add_button" bindtap="bindAddOtherList">
+        +5条
+    </view>
+    <view class="cover">
+        
+    </view>
+    <cover-view class="fixed">
+        <cover-view class="add_button_fix" bindtap="toPage">
+        保存
+        </cover-view>
+    </cover-view>
+</view>

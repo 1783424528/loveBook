@@ -4,7 +4,10 @@
     "pages/usercenter/index",
     "pages/giftBook/index",
     "pages/recordGifts/index",
-    "pages/homeSearchList/index"
+    "pages/sendGifts/index",
+    "pages/homeSearchList/index",
+    "pages/createBook/index",
+    "pages/searchInBook/index"
   ],
   "tabBar": {
     "color": "#666666",

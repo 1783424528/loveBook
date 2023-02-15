@@ -5,18 +5,18 @@ Page({
      * 页面的初始数据
      */
     data: {
+       tab_index:1,
+       giftBookList:[{id:1,name:'999'},{id:2,name:'kkk'}],
+       isChecked:false,
        isDel:false,
-       tab_index:1,//单笔或多笔
-       giftBookList:[{id:1,name:'999'},{id:2,name:'kkk'}],//礼簿列表数据
-       isChecked:false,//保存后是否在本页
-       giftIndex:0,//选中礼簿的序列
-       giftDate:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),//选中日期
-       giftUserName:'',//填写的用户名
-       giftMoney:'',//填写的礼金
-       giftPhone:'',//手机号
-       giftDes:'',//描述
-       desLength:0,//描述字数
-       giftIndexOther:0,//多笔记录的礼簿选中
+       giftIndex:0,
+       giftDate:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),
+       giftUserName:'',
+       giftMoney:'',
+       giftPhone:'',
+       giftDes:'',
+       desLength:0,
+       giftIndexOther:0,
        giftDateOther:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),
        giftOther:[{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''}]
     },
@@ -86,7 +86,6 @@ Page({
         })
     },
     reset(e){
-        console.log('在这');
         this.setData({
             giftUserName:'',
             giftMoney:'',
@@ -100,22 +99,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options,'options');
-       if(options.bookid){
-        this.data.giftBookList.map((item,index)=>{
-            if(item.id==options.bookid){
+        if(options.bookid){
+            this.data.giftBookList.map((item,index)=>{
+                if(item.id==options.bookid){
+                   this.setData({
+                      giftIndex:index
+                   })
+                }
+            })
+           }
+           if(options.recordId){
                this.setData({
-                  giftIndex:index
+                   isDel:true
                })
-            }
-        })
-       }
-       if(options.recordId){
-           this.setData({
-               isDel:true
-           })
-          //调用接口，获取数据
-       }
+              //调用接口，获取数据
+           }
     },
 
     /**

@@ -1,8 +1,68 @@
 <view>
     <view class="form_item">
-        <view>
+        <view class="form_label">
             礼簿
         </view>
-        <input class="weui-input" placeholder="最大输入长度为10" />
+        <picker bindchange="bindPickerChange" range-key="name" value="{{giftIndex}}" range="{{giftBookList}}">
+            <view class="picker">
+                {{giftBookList[giftIndex].name}}
+            </view>
+        </picker>
     </view>
+    <view class="form_item">
+        <view class="form_label">
+            姓名
+        </view>
+        <input class="weui-input" bindinput="bindNameChange" value="{{giftUserName}}" placeholder="请输入姓名" />
+    </view>
+    <view class="form_item">
+        <view class="form_label">
+            礼金
+        </view>
+        <input class="weui-input" value="{{giftMoney}}" bindinput="bindMoneyChange" type="digit" placeholder="请输入礼金金额" />
+    </view>
+    <view class="form_item">
+        <view class="form_label">
+            日期
+        </view>
+        <picker mode="date" value="{{giftDate}}" start="2015-09-01" end="2030-12-12" bindchange="bindDateChange">
+            <view class="picker">
+                {{giftDate}}
+            </view>
+        </picker>
+    </view>
+    <view class="form_item">
+        <view class="form_label">
+            手机
+        </view>
+        <input class="weui-input" bindinput="bindPhoneChange" value="{{giftPhone}}" type="number" placeholder="请输入手机号码" />
+    </view>
+    <view class="form_item_textarea">
+        <view class="form_label text_area">
+            备注
+        </view>
+        <textarea bindinput="bindDesChange" value="{{giftDes}}" maxlength='200' placeholder="自动变高" />
+        <view class="form_desNum">
+            {{desLength}}/200
+        </view>
+    </view>
+    <view>
+    <view class="radio-btn">
+        <label class="radio" bindtap="bindChecked">
+           <radio value="r1" checked="{{isChecked}}"/>保存成功后，继续在此页面添加
+        </label>
+    </view>
+    </view>
+    <view class="cover">
+        
+    </view>
+    <cover-view class="fixed">
+        <cover-view wx:if="{{!isDel}}" class="add_button_fix" bindtap="toPageIn">
+        保存
+        </cover-view>
+        <cover-view wx:if="{{isDel}}" class="isDel">
+            <cover-view class="btn_sel">保存</cover-view>
+            <cover-view class="btn_sel btn_del">删除</cover-view>
+        </cover-view>
+    </cover-view>
 </view>

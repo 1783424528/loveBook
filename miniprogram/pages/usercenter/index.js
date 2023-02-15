@@ -7,10 +7,8 @@ Page({
   data: {
 
   },
-  toHlep: function (e) {
-	  console.log('111');
-	wx.navigateTo("page/hlep/index")
-  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -65,5 +63,11 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  toHlep(){
+	  console.log('111');
+	wx.navigateTo({
+		url: '/pages/hlep/index',
+	})
+}
 })
