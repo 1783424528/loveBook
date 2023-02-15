@@ -11,6 +11,9 @@ Component({
         },
         giftBookList:{
             type:Array
+        },
+        isDel:{
+            type:Boolean
         }
 	},
 	methods:{

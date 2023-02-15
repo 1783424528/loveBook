@@ -117,7 +117,7 @@ Page({
             })
         }else{
             wx.navigateTo({
-                url: '/pages/sendGifts/index?giftId='+e.currentTarget.dataset.recordid,
+                url: '/pages/sendGifts/index?recordId='+e.currentTarget.dataset.recordid,
               })
         }
     }
