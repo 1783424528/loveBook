@@ -8,7 +8,7 @@
         </view>
     </view>
     <view class="search_body">
-        <view wx:for="{{searchItem}}" data-recordid="{{item.recordId}}" bindtap="toRecordHas" wx:key="index" class="search_item">
+        <view wx:for="{{searchValue?searchingItem:searchItem}}" data-recordid="{{item.recordId}}" bindtap="toRecordHas" wx:key="index" class="search_item">
             <view class="item_left">
                 <text>{{item.giftName}}</text>
                 <text class="item_desc">{{item.giftDesc||'暂无备注'}}</text>
@@ -18,7 +18,7 @@
             </view>
         </view>
         <view class="item_length">
-            {{searchItem.length}}条记录
+            {{searchValue?searchingItem.length:searchItem.length}}条记录
         </view>
     </view>
     <view class="add_record" bindtap="addRecord">

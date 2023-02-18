@@ -10,7 +10,8 @@ Page({
        selectTab:1,
        isLeft:false,
        searchValue:'',
-       bookid:''
+       bookid:'',
+       searchingItem:[]
     },
 
     /**
@@ -94,8 +95,15 @@ Page({
     },
     changeValue(e){
         console.log(e,'eeee');
+        let arr = []
+        this.data.searchItem.map(item=>{
+            if(item.giftName.includes(e.detail.value)||item.giftDesc.includes(e.detail.value)){
+                arr.push(item)
+            }
+        })
         this.setData({
-            searchValue:e.detail.value
+            searchValue:e.detail.value,
+            searchingItem:arr
         })
     },
     addRecord(e){
