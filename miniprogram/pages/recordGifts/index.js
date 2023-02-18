@@ -6,6 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+       recordId:'',
        isDel:false,
        tab_index:1,//单笔或多笔
        giftBookList:[],//礼簿列表数据
@@ -146,7 +147,8 @@ Page({
                  if(item.giftBookId==options.giftBookId){
                     this.setData({
                        giftIndex:index,
-                       giftBookList:booklist
+                       giftBookList:booklist,
+                       giftIndexOther:index
                     })
                  }
              })
@@ -162,7 +164,6 @@ Page({
                   booklist.map((item,index)=>{
                     if(item.giftBookId==res.data[0]._id){
                       let arr = res.data[0].children.filter(items=>items.recordId==options.recordId)
-                        console.log('存不存在',arr);
                         that.setData({
                           giftIndex:index,
                           giftBookList:booklist,
@@ -171,7 +172,9 @@ Page({
                           giftMoney:arr[0].giftMoney,
                           giftDes:arr[0].giftDes,
                           giftDate:arr[0].giftDate,
-                          giftPhone:arr[0].giftPhone
+                          giftPhone:arr[0].giftPhone,
+                          giftDateOther:arr[0].giftDate,
+                          recordId:options.recordId
                        })
                     }
                 })

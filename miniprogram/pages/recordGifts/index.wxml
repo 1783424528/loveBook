@@ -21,6 +21,7 @@
             gift-phone="{{giftPhone}}"
             gift-des="{{giftDes}}"
             des-length="{{desLength}}"
+            record-id="{{recordId}}"
             bind:changeIndexbook="changeIndexbook" 
             bind:changeDate="changeDate"
             bind:changeUserName="changeUserName"

@@ -12,14 +12,13 @@ Page({
        isLeft:false,
        searchValue:'',
        bookid:'',
-       searchingItem:[]
+       searchingItem:[],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.bookid,'bookid');
         let that = this
         db.collection('love_book').doc(options.bookid).get({
             success: function(res) {
@@ -51,8 +50,27 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-
+    onShow(option) {
+        console.log('要进入这里了',this.data.bookid);
+       if(this.data.bookid) {
+        let that = this
+        const {bookid} = this.data
+        db.collection('love_book').doc(bookid).get({
+            success: function(res) {
+              // res.data 包含该记录的数据
+              console.log(res.data,res.data.children)
+              wx.setNavigationBarTitle({
+                　　　　title: res.data.giftBookName 
+                　　})
+                console.log(res.data.children,'res.data.children');
+            that.setData({
+                searchItem:res.data.children,
+                selectTab:res.data.type,
+                bookid:bookid
+            })
+            }
+          })
+       }
     },
 
     /**

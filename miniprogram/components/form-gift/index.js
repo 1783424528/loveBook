@@ -32,7 +32,10 @@ Component({
 		},
 		isSend:{
 			type:Boolean
-		}
+		},
+		recordId:{
+			type:String
+		  }
 	},
 	methods:{
 		bindPickerChange(e){
@@ -81,7 +84,7 @@ Component({
 			const db = wx.cloud.database()
 			const _ = db.command
 			//先调用保存接口
-			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes} = this.data
+			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes,isDel,recordId} = this.data
 			console.log(isSend,'isSend',this.data.isChecked);
 			let that = this
 			    if(giftUserName==''||giftMoney==''){
@@ -91,29 +94,80 @@ Component({
 			    	})
 			    	return
 			    }
-				db.collection('love_book').doc(giftBookList[giftIndex].giftBookId).update({
-					// data 字段表示需新增的 JSON 数据
-					data: {
-						children:_.push({
-							giftUserName:giftUserName,
-							giftMoney:giftMoney,
-							giftDate:giftDate,
-							giftPhone:giftPhone,
-							giftDes:giftDes,
-							recordId:+new Date()+giftUserName
-						})
-					},
-					success: function(res) {
-					  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-					  if(!that.data.isChecked){
-						wx.navigateBack({
-							delta: 1
-						  });
-					  }else{
-						that.triggerEvent('reset',{})
-					  }
-					}
-				  })
+				if(isDel){
+					db.collection('love_book').where({
+						'children.recordId':recordId
+					}).update({
+						// data 字段表示需新增的 JSON 数据
+						data: {
+							'children.$':{
+								giftUserName:giftUserName,
+								giftMoney:giftMoney,
+								giftDate:giftDate,
+								giftPhone:giftPhone,
+								giftDes:giftDes,
+								recordId:+new Date()+giftUserName
+							}
+						},
+						success: function(res) {
+						  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+						  if(!that.data.isChecked){
+							wx.navigateBack({
+								delta: 1
+							  });
+						  }else{
+							that.triggerEvent('reset',{})
+						  }
+						}
+					  })
+				}else{
+					db.collection('love_book').doc(giftBookList[giftIndex].giftBookId).update({
+						// data 字段表示需新增的 JSON 数据
+						data: {
+							children:_.push({
+								giftUserName:giftUserName,
+								giftMoney:giftMoney,
+								giftDate:giftDate,
+								giftPhone:giftPhone,
+								giftDes:giftDes,
+								recordId:+new Date()+giftUserName
+							})
+						},
+						success: function(res) {
+						  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+						  if(!that.data.isChecked){
+							wx.navigateBack({
+								delta: 1
+							  });
+						  }else{
+							that.triggerEvent('reset',{})
+						  }
+						}
+					  })
+				}
+		},
+		toDel(e){
+			console.log('进没进');
+			const db = wx.cloud.database()
+			const _ = db.command
+			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes,isDel,recordId} = this.data
+			db.collection('love_book')
+			.where({
+				'children.recordId':recordId
+			}).update({
+				data:{
+					children: _.pull({
+						recordId: _.eq(recordId)
+					})
+				},
+				success: function(res) {
+					console.log(res,'resdsde');
+				  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+					wx.navigateBack({
+						delta: 1
+					  });
+				}
+			})
 		}
 	}
 })
