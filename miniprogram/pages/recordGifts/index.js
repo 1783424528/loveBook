@@ -142,12 +142,14 @@ Page({
                     giftBookDesc:item.giftBookDesc
                 })
             })
+            this.setData({
+                giftBookList:booklist,
+            })
             if(options.giftBookId){
              booklist.map((item,index)=>{
                  if(item.giftBookId==options.giftBookId){
                     this.setData({
                        giftIndex:index,
-                       giftBookList:booklist,
                        giftIndexOther:index
                     })
                  }
@@ -163,10 +165,10 @@ Page({
                   console.log(res.data,'res999999')
                   booklist.map((item,index)=>{
                     if(item.giftBookId==res.data[0]._id){
+                        console.log(index,'index');
                       let arr = res.data[0].children.filter(items=>items.recordId==options.recordId)
                         that.setData({
                           giftIndex:index,
-                          giftBookList:booklist,
                           isDel:true,
                           giftUserName:arr[0].giftUserName,
                           giftMoney:arr[0].giftMoney,

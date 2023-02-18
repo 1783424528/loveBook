@@ -22,18 +22,17 @@
 				查看更多>
 			</view>
 		</view>
-		<view class="search-list-detail" wx:for="{{item.children}}">
+		<view class="search-list-detail" wx:for="{{item.children}}"  >
 			<!-- <view style="">头像</view> -->
 			<image src="../homeSearchList/images/user.png" class="user-icon" />
-			<view class="search-list-detail-mid" >
+			<view class="search-list-detail-mid"   bindtap="toD"   data-recordId="{{item.recordId}}">
 				<view style="display: flex;">
 					<view class="name">{{item.giftUserName}}</view>
 					<view class="tel"> {{item.giftPhone}}</view>
 				</view>
 				<view>{{item.giftDes}}</view>
 			</view>
-			<view style="color: red;flex: 1;line-height: 90rpx;">{{item.giftMoney}}</view>
-
+			<view style="color: red;flex: 1;line-height: 90rpx;"  bindtap="toD"   data-recordId="{{item.recordId}}">{{item.giftMoney}}</view>
 		</view>
 	</view>
 </view>
