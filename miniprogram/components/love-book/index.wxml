@@ -3,9 +3,9 @@
 		<image src="../../images/addBook.png" mode="" class="icon_add" />
 		<text>{{selectTab==1?'收礼礼簿':'送礼礼簿'}}</text>
 	</view>
-	<view class="bookTab data_list" wx:for="{{bookList}}" data-index="{{index}}" data-bookid="{{item.giftBookId}}" bindtap="toSearchBook" bindlongpress="handleLongPress" wx:key="index">
-		<view wx:if="{{maskFlag}}" class="mask" bindtap="del">
-			<view class='mask-content' >
+	<view class="bookTab data_list" wx:for="{{bookList}}" data-index="{{index}}" data-bookid="{{item.giftBookId}}" bindtap="toSearchBook" bindlongpress="handleLongPress" wx:key="index" data-maskFlag="{{maskFlag}}">
+		<view wx:if="{{maskFlag}}" class="mask" >
+			<view class='mask-content' bindtap="del" data-bookid="{{item.giftBookId}}" data-selectTab="{{selectTab}}">
 			<image class='mask-img' src="../love-book/img/del.png" />
 			</view>
 			

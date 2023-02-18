@@ -13,7 +13,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+
     },
 
     /**
@@ -27,16 +27,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        this.getBook()
+		this.getBook()
     },
     getBook(typeInBook){
+		console.log('ttttttttttttttttttttt');
         const {selectTab} = this.data
-        console.log(typeInBook,selectTab,'selectTab');
        this.main(typeInBook||selectTab).then(res=>{
-        console.log(res,'res',res.data);
+        console.log(res,'res');
         let booklist = []
-        res?.data&&res.data.map(item=>{
-            console.log('微信成员');
+        res.data.map(item=>{
             let bookMoney=0,createName = '微信用户';
             item?.children&&item?.children.map(items=>{
                 bookMoney = bookMoney + (items.giftMoney-0)
@@ -51,7 +50,6 @@ Page({
                 username:createName||'微信用户'
             })
         })
-        console.log(booklist,'booklisy');
         this.setData({
             bookList:booklist
         })
@@ -61,12 +59,16 @@ Page({
 		this.setData({
 			maskFlag:true
 		})
+		
 	},
 	changeMaskFlag2(){
 		this.setData({
 			maskFlag:false
 		})
-    },
+	},
+	copyGetBook(selectTab){
+		this.getBook(selectTab.detail)
+	},
     main:async (event, context) => {
         const MAX_LIMIT = 100
         const db = wx.cloud.database()
@@ -87,12 +89,12 @@ Page({
         tasks.push(promise)
       }
       // 等待所有
-      return (await Promise.all(tasks)).length>0&&(await Promise.all(tasks)).reduce((acc, cur) => {
+      return (await Promise.all(tasks)).reduce((acc, cur) => {
         return {
           data: acc.data.concat(cur.data),
           errMsg: acc.errMsg,
         }
-      })
+	  })
     },
     /**
      * 生命周期函数--监听页面隐藏

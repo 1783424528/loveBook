@@ -21,6 +21,7 @@ Page({
 					for (let j = 0; j < data1[i].children.length; j++) {
 						if (data1[i].children[j].giftPhone.includes(e.detail.value) || data1[i].children[j].giftUserName.includes(e.detail.value)) {
 							result.push(data1[i])
+							result = [...new Set(result)]
 						}
 					}
 				}

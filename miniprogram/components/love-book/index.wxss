@@ -87,7 +87,7 @@
 	z-index: 99;
 	top: 0;
 	left: 0;
-	opacity: 0.6;
+	opacity: 0.8;
 	border-radius: 20rpx;
 	display: flex;
 	justify-content: center;

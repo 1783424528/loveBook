@@ -2,7 +2,7 @@
 	<view class="search-container">
 		<view class="search-left">
 			<image style="height: 36rpx;width: 36rpx;" src="../homeSearchList/images/search.png" />
-			<input type="text"  bindinput="bindKeyInput" placeholder="输入姓名，手机" class="input-class" placeholder-class="input-placeholder" value="{{inputValue}}" />
+			<input type="text"  bindinput="bindKeyInput" placeholder="请输入姓名，手机号查询" class="input-class" placeholder-class="input-placeholder" value="{{inputValue}}" />
 		</view>
 		<!-- <view bindtap="cleanValue">
 			<image style="height: 36rpx;width: 36rpx;position: absolute; left: 80%; top:2%" catchtap="cleanValue" src="../homeSearchList/images/cancel.png"></image>

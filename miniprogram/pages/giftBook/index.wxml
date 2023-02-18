@@ -1,8 +1,8 @@
 <navigation-bar tab-data="{{tabData}}" bind:changeNaviIndex="getSelectTab" select-tab="{{selectTab}}"></navigation-bar>
 <view wx:if="{{selectTab==1}}">
-    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}"  mask-flag="{{maskFlag}}" bind:changeMaskFlag='changeMaskFlag'></love-book>
+    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}"  mask-flag="{{maskFlag}}" bind:changeMaskFlag='changeMaskFlag' bind:copyGetBook='copyGetBook'></love-book>
 </view>
 <view wx:if="{{selectTab==2}}">
-    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}" mask-flag="{{maskFlag}}" bind:changeMaskFlag='changeMaskFlag'></love-book>
+    <love-book select-tab="{{selectTab}}" book-list="{{bookList}}" mask-flag="{{maskFlag}}" bind:changeMaskFlag='changeMaskFlag' bind:copyGetBook='copyGetBook'></love-book>
 </view>
 <button class="clean-btn" wx:if="{{maskFlag}}" bindtap="changeMaskFlag2">退出操作</button>
