@@ -60,3 +60,8 @@ font-size: 22rpx;
 color: #515151;
 width: auto !important;
 }
+.user-icon{
+	width: 40px;
+	height: 40px;
+	margin-left: 43%;
+}

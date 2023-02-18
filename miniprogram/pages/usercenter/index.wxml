@@ -1,8 +1,21 @@
 <view class="page">
 	<view class="header">
-		<view class="exit">
+		<view wx-if="{{userInfo}}" class="exit">
 			<image class="exitPic" src="../usercenter/img/exit.png"></image>
-			<view style="margin-top: 25rpx;">退出</view>
+			<view style="margin-top: 25rpx;" bindtap="loginOut">退出</view>
+		</view>
+		<button wx-if="{{!userInfo}}" bindtap="login">
+			<view style="margin-top:20px;margin-right:38px">
+			<image class="user-icon" src="../usercenter/img/user.png"></image>	
+			</view>
+			<text>请登录</text>
+		</button>
+		<view wx:else class="userInfo">
+			<!-- <image class="user-icon" src="{{userInfo.avatarUrl}}"></image> -->
+			<view>
+			<image class="user-icon" src="../usercenter/img/user.png"></image>	
+			</view>
+			<text style="margin-left: 39%; font-weight: 700;">{{userInfo.nickName}}</text>
 		</view>
 	</view>
 	<view class="mid">
@@ -32,13 +45,7 @@
 		</view>
 	</view>
 	<view class="footer">
-		<button wx-if="{{!userInfo}}" bindtap="login">获取头像昵称</button>
-		<view wx:else class="userInfo">
-			<image src="{{userInfo.avatarUrl}}"></image>
-			<text>{{userInfo.nickName}}</text>
-			<button type="warn" bindtap="loginOut">退出登录</button>
 
-		</view>
 
 	</view>
 </view>

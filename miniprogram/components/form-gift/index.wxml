@@ -61,7 +61,7 @@
         保存
         </cover-view>
         <cover-view wx:if="{{isDel}}" class="isDel">
-            <cover-view class="btn_sel">保存</cover-view>
+            <cover-view class="btn_sel" bindtap="toPageIn">保存</cover-view>
             <cover-view class="btn_sel btn_del">删除</cover-view>
         </cover-view>
     </cover-view>

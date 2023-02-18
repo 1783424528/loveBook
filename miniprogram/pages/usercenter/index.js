@@ -32,7 +32,37 @@ Page({
             fail:(err)=> {
                 console.log('授权失败', err);
             }
-        })
+		})
+		wx.login({
+			success: function (res) {
+				console.log(res)
+				console.log('111');
+				 if (res.code) {
+					console.log('通过login接口的code换取openid');
+					 wx.request({
+					   url: 'https://api.weixin.qq.com/sns/jscode2session',
+					   data: {
+						  //填上自己的小程序唯一标识
+						 appid: 'wx5011ed8436ff355f',
+						  //填上自己的小程序的 app secret
+						 secret: 'c8aba88dd7ff05ff5e4218109c6c88bc',
+						 grant_type: 'authorization_code',
+						 js_code: res.code
+					   },
+					   method: 'GET',
+					   header: { 'content-type': 'application/json'},
+					   success: function(openIdRes){
+							console.info("登录成功返回的openId：" + openIdRes.data.openid);
+					   },
+					   fail: function(error) {
+						   console.info("获取用户openId失败");
+						   console.info(error);
+					   }
+					})
+				  }
+				}
+			})
+
     },
     // 退出登录
     loginOut(){
@@ -93,6 +123,7 @@ Page({
   },
   toHlep(){
 	  console.log('111');
+	  
 	wx.navigateTo({
 		url: '/pages/hlep/index',
 	})
