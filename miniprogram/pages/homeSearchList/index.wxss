@@ -83,15 +83,32 @@
 	font-size: 24rpx;
 	flex: 3;
 }
-.name{
+
+.name {
 	font-size: 30rpx;
 }
-.tel{
-margin:5rpx 0 0 10rpx
+
+.tel {
+	margin: 5rpx 0 0 10rpx
 }
-.input-placeholder{
+
+.input-placeholder {
 	font-size: 30rpx;
 }
-.input-class{
+
+.input-class {
 	font-size: 30rpx;
+}
+
+.lookMore {
+	display: inline-block;
+	float: right;
+	font-size: 26rpx;
+	padding-right: 5px
+}
+
+.search-list-title-name {
+	font-size: 30rpx;
+	display: inline-block;
+	margin-left: 8px;
 }

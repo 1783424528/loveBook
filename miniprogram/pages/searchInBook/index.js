@@ -1,4 +1,5 @@
 // pages/searchInBook/index.js
+const db = wx.cloud.database()
 Page({
 
     /**
@@ -18,17 +19,26 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.bookid);
+        console.log(options.bookid,'bookid');
+        let that = this
+        db.collection('love_book').doc(options.bookid).get({
+            success: function(res) {
+              // res.data 包含该记录的数据
+              console.log(res.data,res.data.children)
+              wx.setNavigationBarTitle({
+                　　　　title: res.data.giftBookName 
+                　　})
+                console.log(res.data.children,'res.data.children');
+            that.setData({
+                searchItem:res.data.children,
+                selectTab:res.data.type,
+                bookid:options.bookid
+            })
+            }
+          })
         //调用接口，获取该礼簿的记录项
         // 更改小程序上面的名称
-        　　wx.setNavigationBarTitle({
-            　　　　title: "政策概览" 
-            　　})
-        this.setData({
-            searchItem:[{recordId:1,giftName:'我们',giftDesc:'',giftMoney:3},{recordId:2,giftName:'我们',giftDesc:'',giftMoney:3}],
-            selectTab:options.selectTab,
-            bookid:options.bookid
-        })
+        　　
     },
 
     /**
@@ -97,7 +107,7 @@ Page({
         console.log(e,'eeee');
         let arr = []
         this.data.searchItem.map(item=>{
-            if(item.giftName.includes(e.detail.value)||item.giftDesc.includes(e.detail.value)){
+            if(item.giftUserName.includes(e.detail.value)||item.giftDes.includes(e.detail.value)){
                 arr.push(item)
             }
         })

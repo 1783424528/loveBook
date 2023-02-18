@@ -1,4 +1,5 @@
 // pages/recordGifts/index.js
+const db = wx.cloud.database()
 Page({
 
     /**
@@ -21,7 +22,7 @@ Page({
        giftOther:[{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''}]
     },
 
-    main : async (event, context) => {
+    main:async (event, context) => {
         const MAX_LIMIT = 100
         const db = wx.cloud.database()
         console.log('执行了？');
@@ -127,6 +128,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        const _ = db.command
+        console.log(options,'options');
         this.main().then(res=>{
             console.log(res.data,'res');
             let booklist = []
@@ -138,25 +141,44 @@ Page({
                     giftBookDesc:item.giftBookDesc
                 })
             })
-            this.setData({
-             giftBookList:booklist
-            })
-        })
-       if(options.bookid){
-        this.data.giftBookList.map((item,index)=>{
-            if(item.id==options.bookid){
-               this.setData({
-                  giftIndex:index
-               })
+            if(options.giftBookId){
+             booklist.map((item,index)=>{
+                 if(item.giftBookId==options.giftBookId){
+                    this.setData({
+                       giftIndex:index,
+                       giftBookList:booklist
+                    })
+                 }
+             })
+            }
+            if(options.recordId){
+                let that = this
+               //调用接口，获取数据
+               db.collection('love_book').where({
+                   children:_.elemMatch({recordId:_.eq(options.recordId)})
+               }).get({
+                success: function(res) {
+                  console.log(res.data,'res999999')
+                  booklist.map((item,index)=>{
+                    if(item.giftBookId==res.data[0]._id){
+                      let arr = res.data[0].children.filter(items=>items.recordId==options.recordId)
+                        console.log('存不存在',arr);
+                        that.setData({
+                          giftIndex:index,
+                          giftBookList:booklist,
+                          isDel:true,
+                          giftUserName:arr[0].giftUserName,
+                          giftMoney:arr[0].giftMoney,
+                          giftDes:arr[0].giftDes,
+                          giftDate:arr[0].giftDate,
+                          giftPhone:arr[0].giftPhone
+                       })
+                    }
+                })
+                }
+              })
             }
         })
-       }
-       if(options.recordId){
-           this.setData({
-               isDel:true
-           })
-          //调用接口，获取数据
-       }
        console.log(options,'options');
     },
 

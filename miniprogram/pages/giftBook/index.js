@@ -6,14 +6,14 @@ Page({
         tabData: [{type:1,title:'收礼礼簿',bgcolor:'pink',color:'red'},{type:2,title:'送礼礼簿',bgcolor:'#48D1CC',color:'#00ffff'}],
         //1代表收礼礼簿，2代表送礼礼簿
         selectTab:1,
-		bookList:[{title:'默认送礼',number:3,username:'微信用户',isSys:true,money:999,id:1},{title:'默认送礼',number:3,username:'微信用户',isSys:false,money:999,id:2}],
+		bookList:[],
 		maskFlag:false
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-       console.log(options,'sss');
+        
     },
 
     /**
@@ -27,7 +27,32 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.getBook()
+    },
+    getBook(typeInBook){
+        const {selectTab} = this.data
+       this.main(typeInBook||selectTab).then(res=>{
+        console.log(res,'res');
+        let booklist = []
+        res.data.map(item=>{
+            let bookMoney=0,createName = '微信用户';
+            item?.children&&item?.children.map(items=>{
+                bookMoney = bookMoney + (items.giftMoney-0)
+            })
+            booklist.push({
+                giftBookDate:item.giftBookDate,
+                name:item.giftBookName,
+                giftBookId:item._id,
+                giftBookDesc:item.giftBookDesc,
+                children:item.children,
+                money:bookMoney,
+                username:createName||'微信用户'
+            })
+        })
+        this.setData({
+            bookList:booklist
+        })
+    })
     },
 	changeMaskFlag(){
 		this.setData({
@@ -38,7 +63,34 @@ Page({
 		this.setData({
 			maskFlag:false
 		})
-	},
+    },
+    main:async (event, context) => {
+        const MAX_LIMIT = 100
+        const db = wx.cloud.database()
+        console.log('执行了？',event);
+      // 先取出集合记录总数
+      const countResult = await db.collection('love_book').where({
+          type:event
+      }).count()
+      const total = countResult.total
+      // 计算需分几次取
+      const batchTimes = Math.ceil(total / 100)
+      // 承载所有读操作的 promise 的数组
+      const tasks = []
+      for (let i = 0; i < batchTimes; i++) {
+        const promise = db.collection('love_book').where({
+            type:event
+        }).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+        tasks.push(promise)
+      }
+      // 等待所有
+      return (await Promise.all(tasks)).reduce((acc, cur) => {
+        return {
+          data: acc.data.concat(cur.data),
+          errMsg: acc.errMsg,
+        }
+      })
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
@@ -77,6 +129,7 @@ Page({
     },
     getSelectTab(param){
     //    this.selectTab = param.detail.type
+    this.getBook(param.detail.type)
     this.setData({
         selectTab:param.detail.type
     })

@@ -1,5 +1,5 @@
 <!--pages/recordGifts/index.wxml-->
-<view class="tab_top"> 
+<view class="tab_top" wx:if="{{isDel}}"> 
     <view class="tab_left tab_items {{tab_index==1?'tab_active':''}}" data-index="1" bindtap="changeTab">
         单笔
     </view>

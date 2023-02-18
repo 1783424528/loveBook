@@ -10,8 +10,8 @@
     <view class="search_body">
         <view wx:for="{{searchValue?searchingItem:searchItem}}" data-recordid="{{item.recordId}}" bindtap="toRecordHas" wx:key="index" class="search_item">
             <view class="item_left">
-                <text>{{item.giftName}}</text>
-                <text class="item_desc">{{item.giftDesc||'暂无备注'}}</text>
+                <text>{{item.giftUserName}}</text>
+                <text class="item_desc">{{item.giftDes||'暂无备注'}}</text>
             </view>
             <view class="item_red">
                 {{item.giftMoney}}
