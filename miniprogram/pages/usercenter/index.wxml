@@ -1,37 +1,44 @@
 <view class="page">
 	<view class="header">
-	<view class="exit" >
-		<image class="exitPic" src="../usercenter/img/exit.png"></image>
-		<view style="margin-top: 25rpx;">退出</view>
-	</view>
-	</view>
-	<view class="mid" >
-		<view>
-		<button open-type="share" class="share-btn">
-			<image class="share" src="../usercenter/img/share.png"></image>
-			<view>
-				好友分享
-			</view>
-		</button>
+		<view class="exit">
+			<image class="exitPic" src="../usercenter/img/exit.png"></image>
+			<view style="margin-top: 25rpx;">退出</view>
 		</view>
-		<view   bindtap='toHlep'>
+	</view>
+	<view class="mid">
+		<view>
+			<button open-type="share" class="share-btn">
+				<image class="share" src="../usercenter/img/share.png"></image>
+				<view>
+					好友分享
+				</view>
+			</button>
+		</view>
+		<view bindtap='toHlep'>
 			<image class="help" src="../usercenter/img/help.png"></image>
 			<view>
 				帮助中心
 			</view>
 		</view>
 		<view class="advice">
-		<button class="advice-btn" open-type="feedback">
-			<view >
-				<image class="help" src="../usercenter/img/advice.png"></image>
-				<view style="white-space: nowrap; margin-left: -10rpx; position:fixed">
-					反馈建议
+			<button class="advice-btn" open-type="feedback">
+				<view>
+					<image class="help" src="../usercenter/img/advice.png"></image>
+					<view style="white-space: nowrap; margin-left: -10rpx; position:fixed">
+						反馈建议
+					</view>
 				</view>
-			</view>
-		</button>
+			</button>
 		</view>
 	</view>
-		<view class="footer">
+	<view class="footer">
+		<button wx-if="{{!userInfo}}" bindtap="login">获取头像昵称</button>
+		<view wx:else class="userInfo">
+			<image src="{{userInfo.avatarUrl}}"></image>
+			<text>{{userInfo.nickName}}</text>
+			<button type="warn" bindtap="loginOut">退出登录</button>
 
 		</view>
+
 	</view>
+</view>
