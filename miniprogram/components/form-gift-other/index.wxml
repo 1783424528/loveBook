@@ -36,7 +36,7 @@
         
     </view>
     <cover-view class="fixed">
-        <cover-view wx:if="{{!isDel}}" class="add_button_fix" bindtap="toPageIn">
+        <cover-view wx:if="{{!isDel}}" class="add_button_fix" bindtap="toPage">
         保存
         </cover-view>
         <cover-view wx:if="{{isDel}}" class="isDel">

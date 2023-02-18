@@ -14,6 +14,9 @@ Component({
         },
         isDel:{
             type:Boolean
+        },
+        isSend:{
+            type:Boolean
         }
 	},
 	methods:{
@@ -44,57 +47,42 @@ Component({
         },
         toPage(e){
             const db = wx.cloud.database()
+            const _ = db.command
 			//先调用保存接口
-			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes} = this.data
-			console.log(isSend,'isSend');
-			if(isSend){
-				db.collection('send_gift').add({
-					// data 字段表示需新增的 JSON 数据
-					data: {
-					  giftBookId:giftBookList[giftIndex].id,
-					  giftUserName:giftUserName,
-					  giftMoney:giftMoney,
-					  giftDate:giftDate,
-					  giftPhone:giftPhone,
-					  giftDes:giftDes
-					},
-					success: function(res) {
-					  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-					  console.log(res)
-					  if(!this.data.isChecked){
-						wx.navigateBack({
-							delta: 1
-						  });
-					  }else{
-						this.triggerEvent('reset',{})
-					  }
-					}
-				  })
-			}else{
-				console.log(db,'dbdb');
-				db.collection('get_gift').add({
-					// data 字段表示需新增的 JSON 数据
-					data: {
-					  giftBookId:giftBookList[giftIndex].id,
-					  giftUserName:giftUserName,
-					  giftMoney:giftMoney,
-					  giftDate:giftDate,
-					  giftPhone:giftPhone,
-					  giftDes:giftDes
-					},
-					success: function(res) {
-					  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-					  console.log(res)
-					  if(!this.data.isChecked){
-						wx.navigateBack({
-							delta: 1
-						  });
-					  }else{
-						this.triggerEvent('reset',{})
-					  }
-					}
-				  })
-			}
+			const {isSend,giftBookList,giftIndexOther,giftDateOther,giftOther} = this.data
+            console.log(isSend,'isSend',giftOther);
+            if(giftOther.filter(item=>item.name&&item.money).length>0){
+                let giftArr = giftOther.filter(item=>item.name&&item.money)
+                giftArr.map((item,index)=>{
+                        db.collection('love_book').doc(giftBookList[giftIndexOther].giftBookId).update({
+                            // data 字段表示需新增的 JSON 数据
+                            data: {
+                              children:_.push({
+                                giftUserName:item.name,
+                                giftMoney:item.money,
+                                giftDate:giftDateOther,
+                                giftPhone:'',
+                                giftDes:item.desc,
+                                recordId:+new Date()+item.name+index
+                              })
+                            },
+                            success: function(res) {
+                              // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+                              wx.navigateBack({
+                                delta: 1
+                              });
+                            }
+                          })
+                   
+                })
+            }else{
+                wx.showToast({
+                    title: '至少存在一条姓名礼金都存在的数据',
+                    icon: 'none',
+                    duration: 2000
+                  })
+            }
+			
         }
 	}
 })

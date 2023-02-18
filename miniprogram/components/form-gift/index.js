@@ -79,57 +79,41 @@ Component({
 		},
 		toPageIn(e){
 			const db = wx.cloud.database()
+			const _ = db.command
 			//先调用保存接口
 			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes} = this.data
-			console.log(isSend,'isSend');
-			if(isSend){
-				db.collection('send_gift').add({
+			console.log(isSend,'isSend',this.data.isChecked);
+			let that = this
+			    if(giftUserName==''||giftMoney==''){
+                    wx.showToast({
+			    	  title: '姓名、礼金不能为空',
+			    	  icon:'none'
+			    	})
+			    	return
+			    }
+				db.collection('love_book').doc(giftBookList[giftIndex].giftBookId).update({
 					// data 字段表示需新增的 JSON 数据
 					data: {
-					  giftBookId:giftBookList[giftIndex].id,
-					  giftUserName:giftUserName,
-					  giftMoney:giftMoney,
-					  giftDate:giftDate,
-					  giftPhone:giftPhone,
-					  giftDes:giftDes
+						children:_.push({
+							giftUserName:giftUserName,
+							giftMoney:giftMoney,
+							giftDate:giftDate,
+							giftPhone:giftPhone,
+							giftDes:giftDes,
+							recordId:+new Date()+giftUserName
+						})
 					},
 					success: function(res) {
 					  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-					  console.log(res)
-					  if(!this.data.isChecked){
+					  if(!that.data.isChecked){
 						wx.navigateBack({
 							delta: 1
 						  });
 					  }else{
-						this.triggerEvent('reset',{})
+						that.triggerEvent('reset',{})
 					  }
 					}
 				  })
-			}else{
-				console.log(db,'dbdb');
-				db.collection('get_gift').add({
-					// data 字段表示需新增的 JSON 数据
-					data: {
-					  giftBookId:giftBookList[giftIndex].id,
-					  giftUserName:giftUserName,
-					  giftMoney:giftMoney,
-					  giftDate:giftDate,
-					  giftPhone:giftPhone,
-					  giftDes:giftDes
-					},
-					success: function(res) {
-					  // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-					  console.log(res)
-					  if(!this.data.isChecked){
-						wx.navigateBack({
-							delta: 1
-						  });
-					  }else{
-						this.triggerEvent('reset',{})
-					  }
-					}
-				  })
-			}
 		}
 	}
 })

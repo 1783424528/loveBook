@@ -21,6 +21,34 @@ Page({
        giftOther:[{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''},{name:'',money:'',desc:''}]
     },
 
+    main : async (event, context) => {
+        const MAX_LIMIT = 100
+        const db = wx.cloud.database()
+        console.log('执行了？');
+      // 先取出集合记录总数
+      const countResult = await db.collection('love_book').where({
+        type:2
+    }).count()
+      const total = countResult.total
+      // 计算需分几次取
+      const batchTimes = Math.ceil(total / 100)
+      // 承载所有读操作的 promise 的数组
+      const tasks = []
+      for (let i = 0; i < batchTimes; i++) {
+        const promise = db.collection('love_book').where({
+            type:2
+        }).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
+        tasks.push(promise)
+      }
+      // 等待所有
+      return (await Promise.all(tasks)).reduce((acc, cur) => {
+        return {
+          data: acc.data.concat(cur.data),
+          errMsg: acc.errMsg,
+        }
+      })
+    },
+
     changeTab(e){
        console.log(e.target.dataset.index);
        this.setData({
@@ -99,6 +127,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.main().then(res=>{
+            console.log(res.data,'res');
+            let booklist = []
+            res.data.map(item=>{
+                booklist.push({
+                    giftBookDate:item.giftBookDate,
+                    name:item.giftBookName,
+                    giftBookId:item._id,
+                    giftBookDesc:item.giftBookDesc
+                })
+            })
+            this.setData({
+             giftBookList:booklist
+            })
+        })
         if(options.bookid){
             this.data.giftBookList.map((item,index)=>{
                 if(item.id==options.bookid){

@@ -1,0 +1,9 @@
+.clean-btn {
+	background-color: red;
+	border-radius: 20rpx;
+	color:gray;
+	position: fixed;
+	bottom: 20px;
+	width: 75%;
+	left: 25%;
+}

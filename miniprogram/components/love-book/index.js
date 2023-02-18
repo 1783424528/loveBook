@@ -5,6 +5,9 @@ Component({
 		},
 		bookList:{
 			type:Array
+		},
+		maskFlag:{
+			type:Boolean
 		}
 	},
 	methods:{
@@ -15,9 +18,21 @@ Component({
 		},
 		toSearchBook(e){
 			console.log(e.currentTarget.dataset.index,'eee',e);
+
 			wx.navigateTo({
 				url: '/pages/searchInBook/index?bookid='+e.currentTarget.dataset.bookid+'&selectTab='+this.data.selectTab,
 			})
+
+		},
+
+		handleLongPress(e){
+			console.log("长按", e.currentTarget.dataset.bookid);
+              this.triggerEvent('changeMaskFlag')
+		},
+		del(e){
+			console.log('del');
+			return false;
 		}
+		
 	}
 })
