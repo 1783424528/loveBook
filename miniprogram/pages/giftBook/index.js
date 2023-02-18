@@ -31,10 +31,12 @@ Page({
     },
     getBook(typeInBook){
         const {selectTab} = this.data
+        console.log(typeInBook,selectTab,'selectTab');
        this.main(typeInBook||selectTab).then(res=>{
-        console.log(res,'res');
+        console.log(res,'res',res.data);
         let booklist = []
-        res.data.map(item=>{
+        res?.data&&res.data.map(item=>{
+            console.log('微信成员');
             let bookMoney=0,createName = '微信用户';
             item?.children&&item?.children.map(items=>{
                 bookMoney = bookMoney + (items.giftMoney-0)
@@ -49,6 +51,7 @@ Page({
                 username:createName||'微信用户'
             })
         })
+        console.log(booklist,'booklisy');
         this.setData({
             bookList:booklist
         })
@@ -84,7 +87,7 @@ Page({
         tasks.push(promise)
       }
       // 等待所有
-      return (await Promise.all(tasks)).reduce((acc, cur) => {
+      return (await Promise.all(tasks)).length>0&&(await Promise.all(tasks)).reduce((acc, cur) => {
         return {
           data: acc.data.concat(cur.data),
           errMsg: acc.errMsg,

@@ -43,7 +43,7 @@ Page({
         tasks.push(promise)
       }
       // 等待所有
-      return (await Promise.all(tasks)).reduce((acc, cur) => {
+      return (await Promise.all(tasks)).length>0&&(await Promise.all(tasks)).reduce((acc, cur) => {
         return {
           data: acc.data.concat(cur.data),
           errMsg: acc.errMsg,
