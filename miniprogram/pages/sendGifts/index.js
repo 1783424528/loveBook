@@ -142,12 +142,14 @@ Page({
                     giftBookDesc:item.giftBookDesc
                 })
             })
+            this.setData({
+                giftBookList:booklist,
+            })
             if(options.giftBookId){
              booklist.map((item,index)=>{
                  if(item.giftBookId==options.giftBookId){
                     this.setData({
                        giftIndex:index,
-                       giftBookList:booklist,
                        giftIndexOther
                     })
                  }
@@ -167,7 +169,6 @@ Page({
                         that.setData({
                           giftIndex:index,
                           giftIndexOther:index,
-                          giftBookList:booklist,
                           isDel:true,
                           giftUserName:arr[0].giftUserName,
                           giftMoney:arr[0].giftMoney,
