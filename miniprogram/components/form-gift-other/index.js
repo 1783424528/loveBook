@@ -48,6 +48,13 @@ Component({
     toPage(e){
             const db = wx.cloud.database()
             const _ = db.command
+            if(!giftBookList?.length){
+              wx.showToast({
+              title: '请先创建礼簿',
+              icon:'error'
+            })
+            return
+           }
 			//先调用保存接口
 			const {isSend,giftBookList,giftIndexOther,giftDateOther,giftOther} = this.data
             console.log(isSend,'isSend',giftOther);

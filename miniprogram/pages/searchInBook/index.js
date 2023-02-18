@@ -51,7 +51,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow(option) {
-        console.log('要进入这里了',this.data.bookid);
        if(this.data.bookid) {
         let that = this
         const {bookid} = this.data

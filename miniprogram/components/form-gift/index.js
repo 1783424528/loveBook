@@ -83,6 +83,13 @@ Component({
 		toPageIn(e){
 			const db = wx.cloud.database()
 			const _ = db.command
+			if(!giftBookList?.length){
+               wx.showToast({
+				 title: '请先创建礼簿',
+				 icon:'error'
+			   })
+               return
+			}
 			//先调用保存接口
 			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes,isDel,recordId} = this.data
 			console.log(isSend,'isSend',this.data.isChecked);
@@ -147,7 +154,6 @@ Component({
 				}
 		},
 		toDel(e){
-			console.log('进没进');
 			const db = wx.cloud.database()
 			const _ = db.command
 			const {isSend,giftBookList,giftIndex,giftUserName,giftMoney,giftDate,giftPhone,giftDes,isDel,recordId} = this.data

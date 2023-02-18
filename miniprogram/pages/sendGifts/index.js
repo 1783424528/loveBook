@@ -134,7 +134,7 @@ Page({
         this.main().then(res=>{
             console.log(res.data,'res');
             let booklist = []
-            res.data.map(item=>{
+            res?.data&&res.data.map(item=>{
                 booklist.push({
                     giftBookDate:item.giftBookDate,
                     name:item.giftBookName,
@@ -150,12 +150,16 @@ Page({
                  if(item.giftBookId==options.giftBookId){
                     this.setData({
                        giftIndex:index,
-                       giftIndexOther
+                       giftIndexOther:index,
                     })
                  }
              })
             }
             if(options.recordId){
+                wx.showToast({
+                  icon:'loading',
+                  title:'加载中'
+                })
                 let that = this
                //调用接口，获取数据
                db.collection('love_book').where({
@@ -166,7 +170,8 @@ Page({
                   booklist.map((item,index)=>{
                     if(item.giftBookId==res.data[0]._id){
                       let arr = res.data[0].children.filter(items=>items.recordId==options.recordId)
-                        that.setData({
+                      wx.hideToast()  
+                      that.setData({
                           giftIndex:index,
                           giftIndexOther:index,
                           isDel:true,
