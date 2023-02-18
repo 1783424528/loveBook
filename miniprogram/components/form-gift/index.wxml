@@ -47,7 +47,7 @@
         </view>
     </view>
     <view>
-    <view class="radio-btn">
+    <view class="radio-btn" wx:if="{{!isDel}}">
         <label class="radio" bindtap="bindChecked">
            <radio value="r1" checked="{{isChecked}}"/>保存成功后，继续在此页面添加
         </label>
