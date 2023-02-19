@@ -3,7 +3,7 @@ Page({
     data: {
         // 组件参数设置，传递到组件
         //顶部导航栏传值
-        tabData: [{type:1,title:'收礼礼簿',bgcolor:'pink',color:'red'},{type:2,title:'送礼礼簿',bgcolor:'#48D1CC',color:'#00ffff'}],
+        tabData: [{type:1,title:'收礼礼簿',bgcolor:'pink',color:'red'},{type:2,title:'送礼礼簿',bgcolor:'#1296db',color:'#00ffff'}],
         //1代表收礼礼簿，2代表送礼礼簿
         selectTab:1,
 		bookList:[],

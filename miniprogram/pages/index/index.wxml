@@ -21,18 +21,30 @@
     </view>
     <view class="main_user">
       <view class="main_item" bindtap="click">
-        <image src="../../images/getBook.png" mode=""/>
-        <text class="big_text">记录收礼</text>
-        <view class="btn_small">
+        <view class="main_top">
+          <text class="big_text"><text class="big_font">收</text>礼记录</text>
+          <image src="../../images/getBook.png" mode=""/>
         </view>
-        <text>记录收礼的便捷导航</text>
+        <view class="main_top line_main">
+          <text><text class="bigs_font">G</text>ift-receiving-record</text>
+          <view class="btn_smalls">
+          </view>
+          <view class="btn_small">
+          </view>
+        </view>
       </view>
       <view class="main_item" bindtap="clickSend">
-        <image src="../../images/sendBook.png" mode=""/>
-        <text class="big_text">记录送礼</text>
-        <view class="btn_small" style="background-color: #1296db;">
+        <view class="main_top">
+          <text class="big_text"><text class="big_font">送</text>礼记录</text>
+          <image src="../../images/sendBook.png" mode=""/>
         </view>
-        <text>记录送礼的便捷导航</text>
+        <view class="main_top line_main">
+          <text><text class="bigs_font">G</text>ift-giving-record</text>
+          <view class="btn_smalls">
+          </view>
+          <view class="btn_small" style="background-color: #1296db;">
+          </view>
+        </view>
       </view>
     </view>
   </view>
