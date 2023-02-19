@@ -35,7 +35,7 @@ Page({
        this.main(typeInBook||selectTab).then(res=>{
         console.log(res,'res');
         let booklist = []
-        res.data.map(item=>{
+        res?.data&&res.data.map(item=>{
             let bookMoney=0,createName = '微信用户';
             item?.children&&item?.children.map(items=>{
                 bookMoney = bookMoney + (items.giftMoney-0)
@@ -89,7 +89,7 @@ Page({
         tasks.push(promise)
       }
       // 等待所有
-      return (await Promise.all(tasks)).reduce((acc, cur) => {
+      return (await Promise.all(tasks)).length>0&&(await Promise.all(tasks)).reduce((acc, cur) => {
         return {
           data: acc.data.concat(cur.data),
           errMsg: acc.errMsg,

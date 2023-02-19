@@ -83,7 +83,8 @@ Component({
 		toPageIn(e){
 			const db = wx.cloud.database()
 			const _ = db.command
-			if(!giftBookList?.length){
+			console.log(this.data.giftBookList);
+			if(this.data.giftBookList?.length==0){
                wx.showToast({
 				 title: '请先创建礼簿',
 				 icon:'error'
@@ -97,7 +98,7 @@ Component({
 			    if(giftUserName==''||giftMoney==''){
                     wx.showToast({
 			    	  title: '姓名、礼金不能为空',
-			    	  icon:'none'
+			    	  icon:'error'
 			    	})
 			    	return
 			    }

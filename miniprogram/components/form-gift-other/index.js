@@ -48,7 +48,7 @@ Component({
     toPage(e){
             const db = wx.cloud.database()
             const _ = db.command
-            if(!giftBookList?.length){
+            if(this.data.giftBookList?.length==0){
               wx.showToast({
               title: '请先创建礼簿',
               icon:'error'
@@ -85,8 +85,7 @@ Component({
             }else{
                 wx.showToast({
                     title: '至少存在一条姓名礼金都存在的数据',
-                    icon: 'none',
-                    duration: 2000
+                    icon: 'error',
                   })
             }
 			
