@@ -15,7 +15,7 @@
 			<view>
 			<image class="user-icon" src="../usercenter/img/user.png"></image>	
 			</view>
-			<text style="margin-left: 39%; font-weight: 700;">{{userInfo.nickName}}</text>
+			<text style="display: flex;justify-content: center; font-weight: 700;">{{userInfo.nickName}}</text>
 		</view>
 	</view>
 	<view class="mid">
@@ -29,7 +29,7 @@
 		</view>
 		<view bindtap='toHlep'>
 			<image class="help" src="../usercenter/img/help.png"></image>
-			<view>
+			<view style="font-weight: 700;">
 				帮助中心
 			</view>
 		</view>

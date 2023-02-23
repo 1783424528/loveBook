@@ -8,7 +8,28 @@ Page({
         selectTab:1,
 		bookList:[],
 		maskFlag:false
-    },
+	},
+	isLogin() {
+		let user = wx.getStorageSync('user')
+		if (!user) {
+			wx.showModal({
+				title: '提示',
+				content: '当前用户状态未登录，请登录',
+				success: function (res) {
+					if (res.confirm) { //这里是点击了确定以后
+						wx.switchTab({
+							url: '/pages/usercenter/index',
+						})
+					} else { //这里是点击了取消以后
+						console.log('用户点击取消')
+					}
+				}
+			})
+			return false
+		} else {
+			return true
+		}
+	},
     /**
      * 生命周期函数--监听页面加载
      */
@@ -27,6 +48,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+		this.isLogin()
 		this.getBook()
     },
     getBook(typeInBook){

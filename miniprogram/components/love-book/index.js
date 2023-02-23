@@ -11,9 +11,35 @@ Component({
 		}
 	},
 	methods:{
+		isLogin() {
+			let user = wx.getStorageSync('user')
+			if (!user) {
+				wx.showModal({
+					title: '提示',
+					content: '当前用户状态未登录，请登录',
+					success: function (res) {
+						if (res.confirm) { //这里是点击了确定以后
+							wx.switchTab({
+								url: '/pages/usercenter/index',
+							})
+						} else { //这里是点击了取消以后
+							console.log('用户点击取消')
+						}
+					}
+				})
+				return false
+			} else {
+				return true
+			}
+		},
 		toCreateBook(e){
-			wx.navigateTo({
-				url: '/pages/createBook/index?tab='+this.data.selectTab,
+			let p = new Promise((resolve, reject) => {
+				let flag = this.isLogin()
+				flag ? resolve() : reject()
+			}).then(() => {
+				wx.navigateTo({
+					url: '/pages/createBook/index?tab='+this.data.selectTab,
+				})
 			})
 		},
 		toSearchBook(e){
@@ -21,10 +47,14 @@ Component({
 			if (e.currentTarget.dataset.maskflag) {
 				return false;
 			}
-			wx.navigateTo({
-				url: '/pages/searchInBook/index?bookid='+e.currentTarget.dataset.bookid+'&selectTab='+this.data.selectTab,
+			let p = new Promise((resolve, reject) => {
+				let flag = this.isLogin()
+				flag ? resolve() : reject()
+			}).then(() => {
+				wx.navigateTo({
+					url: '/pages/searchInBook/index?bookid='+e.currentTarget.dataset.bookid+'&selectTab='+this.data.selectTab,
+				})
 			})
-
 		},
 
 		handleLongPress(e){

@@ -7,7 +7,8 @@
     "pages/sendGifts/index",
     "pages/homeSearchList/index",
     "pages/createBook/index",
-    "pages/searchInBook/index"
+	"pages/searchInBook/index",
+	"pages/hlep/index"
   ],
   "tabBar": {
     "color": "#666666",
@@ -39,7 +40,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FF0033",
-    "navigationBarTitleText": "礼尚往来",
+    "navigationBarTitleText": "人亲簿",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",

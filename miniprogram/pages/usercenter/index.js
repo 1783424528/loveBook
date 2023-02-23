@@ -121,9 +121,7 @@ Page({
   onShareAppMessage() {
 
   },
-  toHlep(){
-	  console.log('111');
-	  
+  toHlep(){ 
 	wx.navigateTo({
 		url: '/pages/hlep/index',
 	})
