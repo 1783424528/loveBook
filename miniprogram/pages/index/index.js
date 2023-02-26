@@ -113,5 +113,12 @@ Page({
 				url: '/pages/homeSearchList/index',
 			})
 		})
+	},
+
+	onDetail(){
+		wx.showToast({
+		  title: '本功能暂未开放',
+		  icon: 'error',
+		})
 	}
 })

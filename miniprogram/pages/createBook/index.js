@@ -7,16 +7,27 @@ Page({
         createDate:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),
         createDesc:'',
         tab:0,
-        descLength:0
+		descLength:0,
+		bookId:''
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-         console.log(options,'options');
+         console.log(options,'options111111111111111111');
          this.setData({
-             tab:options.tab
-         })
+			 tab:options.tab,
+			 createName:options.name,
+			 createDate:options.giftBookDate,
+			 createDesc:options.giftBookDesc,
+			 bookId:options.bookId
+		 })
+		 if(options.bookId){
+			wx.setNavigationBarTitle({
+				　　　　title: '编辑礼簿'
+				　　})
+		 }
+
     },
 
     /**

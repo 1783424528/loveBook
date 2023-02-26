@@ -5,6 +5,11 @@
     line-height: 100rpx;
     border-bottom: 1px solid #959CBA;
     align-items: center;
+    width: 100%;
+}
+.form_item input {
+    width: calc(100% - 186rpx);
+    /* width: ; */
 }
 .form_item .form_label {
     margin-right: 60rpx;

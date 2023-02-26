@@ -75,6 +75,12 @@ Component({
 			// console.log(that.data.selectTab,'33333333333333333333333333333333333333333333');
 			let selectTab=that.data.selectTab
 			that.triggerEvent('copyGetBook',selectTab)
+		},
+		edit(e){
+			let item = e.currentTarget.dataset.item;
+			wx.navigateTo({
+				url: '/pages/createBook/index?tab='+this.data.selectTab+'&name='+item.name+'&giftBookDate='+item.giftBookDate+'&giftBookDesc='+item.giftBookDesc+'&bookId='+item.giftBookId,
+			})
 		}
 		
 	}

@@ -20,30 +20,36 @@
       </swiper>
     </view>
     <view class="main_user">
-      <view class="main_item" bindtap="click">
+      <view class="main_item" bindtap="click" style="background-color: #70b5b2;">
         <view class="main_top">
-          <text class="big_text"><text class="big_font">收</text>礼记录</text>
-          <image src="../../images/getBook.png" mode=""/>
+          <image src="../../images/getRecord_1.png" mode=""/>
         </view>
         <view class="main_top line_main">
-          <text><text class="bigs_font">G</text>ift-receiving-record</text>
-          <view class="btn_smalls">
-          </view>
-          <view class="btn_small">
-          </view>
+          <text class="big_text"><text class="big_font">记</text>录收礼</text>
         </view>
       </view>
-      <view class="main_item" bindtap="clickSend">
+      <view class="main_item" bindtap="clickSend" style="background-color: #4a7ceb;">
         <view class="main_top">
-          <text class="big_text"><text class="big_font">送</text>礼记录</text>
-          <image src="../../images/sendBook.png" mode=""/>
+          <image src="../../images/getRecord_1.png" mode=""/>
         </view>
         <view class="main_top line_main">
-          <text><text class="bigs_font">G</text>ift-giving-record</text>
-          <view class="btn_smalls">
-          </view>
-          <view class="btn_small" style="background-color: #1296db;">
-          </view>
+          <text class="big_text"><text class="big_font">记</text>录送礼</text>
+        </view>
+      </view>
+      <view class="main_item" style="background-color: #a2c368;"  bindtap="onDetail">
+        <view class="main_top">
+          <image src="../../images/map.png" mode=""/>
+        </view>
+        <view class="main_top line_main">
+          <text class="big_text"><text class="big_font">地</text>图</text>
+        </view>
+      </view>
+      <view class="main_item" style="background-color: #73b063;"  bindtap="onDetail">
+        <view class="main_top">
+          <image src="../../images/givesome.png" mode=""/>
+        </view>
+        <view class="main_top line_main">
+          <text class="big_text"><text class="big_font">请</text>帖</text>
         </view>
       </view>
     </view>

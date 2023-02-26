@@ -35,45 +35,56 @@
 .main_user {
 	width: calc(100% - 20rpx);
 	display: flex;
-	justify-content: space-around;
+	/* justify-content: space-around; */
+	justify-content: center;
+	padding: 0 60rpx;
+	flex-wrap: wrap;
 	margin-top: 12rpx;
 }
 .main_user .main_item {
-	width: 40%;
-	height: 200rpx;
+	width: 35%;
+	height: 140rpx;
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+	margin-bottom: 40rpx;
 	border-radius: 18rpx;
 	box-shadow: 0px 6px 22px 12px rgba(5,14,28,0.08);
 	padding: 24rpx;
 }
 .main_user .main_item .main_top {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	position: relative;
 }
 .main_user .main_item  .line_main {
-	margin-top: 40rpx;
+	margin-top: -20rpx;
+	justify-content: unset;
 }
 .main_user .main_item .main_top .big_font {
-	font-size: 48rpx;
-	color: #1A2243;
-	font-weight: 300;
+	font-size: 70rpx;
+	color: #fff;
+	font-weight: 400;
 }
 
 .main_user .main_item image {
-	width: 65rpx;
-	height: 65rpx;
+	width: 70rpx;
+	height: 70rpx;
 	display: block;
-	margin-bottom: 24rpx;
-	margin-right: 20rpx;
+	margin-top: -8rpx;
+	margin-right: -8rpx;
+	margin-bottom: 10rpx;
+	/* margin-bottom: 24rpx; */
+	/* margin-right: 20rpx; */
 }
 .main_user .main_item .big_text {
 	font-size: 36rpx;
-	color: #1A2243;
+	color: #fff;
 	font-weight: 500;
+	letter-spacing:6rpx;
 }
 .main_user .main_item .main_top .bigs_font {
-	font-size: 42rpx;
+	font-size: 60rpx;
 }
 .main_user .main_item .btn_small {
 	position: absolute;

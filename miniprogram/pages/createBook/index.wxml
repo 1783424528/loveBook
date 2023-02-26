@@ -4,6 +4,7 @@
         create-date="{{createDate}}"
         create-desc="{{createDesc}}"
         desc-length="{{descLength}}"
+		book-id='{{bookId}}'
         tab="{{tab}}"
         bind:changeCreateName="changeCreateName"
         bind:changeCreateDate="changeCreateDate"

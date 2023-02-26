@@ -5,14 +5,19 @@
 	</view>
 	<view class="bookTab data_list" wx:for="{{bookList}}" data-index="{{index}}" data-bookid="{{item.giftBookId}}" bindtap="toSearchBook" bindlongpress="handleLongPress" wx:key="index" data-maskFlag="{{maskFlag}}">
 		<view wx:if="{{maskFlag}}" class="mask" >
-			<view class='mask-content' bindtap="del" data-bookid="{{item.giftBookId}}" data-selectTab="{{selectTab}}">
+		<view  class='mask-content-all'>
+			<view class='mask-content-edit' bindtap="edit" data-item="{{item}}" data-bookid="{{item.giftBookId}}" data-selectTab="{{selectTab}}">
+			<view  class='dave' style="display: none;">{{item}}</view>
+			<image class='mask-img' src="../love-book/img/edit.png" />
+			</view>
+			<view class='mask-content-del' bindtap="del" data-bookid="{{item.giftBookId}}" data-selectTab="{{selectTab}}">
 			<image class='mask-img' src="../love-book/img/del.png" />
 			</view>
-			
+		</view>
 		</view>
 		<text class="book_title">{{item.name}}</text>
-		<text wx:if="{{item.isSys}}" class="book_text">系统默认的{{selectTab==1?'收':'送'}}礼礼簿</text>
-		<text class="book_text" style="margin-bottom: {{!item.isSys?'36rpx':'0rpx'}};">共{{item.children.length}}笔</text>
+		<text wx:if="{{item.giftBookDesc}}" class="book_text">{{item.giftBookDesc}}</text>
+		<text class="book_text" style="margin-bottom: {{!item.giftBookDesc?'36rpx':'0rpx'}};">共{{item.children.length}}笔</text>
 		<view class="bookLoved_content">
 			<view class="line_loved">
 			</view>
@@ -21,6 +26,9 @@
 			</view>
 		</view>
 		<text class="book_money">￥{{item.money}}</text>
-		<text class="book_text book_user">{{item.username}}</text>
+		<view>
+		<text class="date_title ">{{item.giftBookDate}}</text>
+		<text class="book_text book_user">{{item.username}}</text>	
+		</view>
 	</view>
 </view>

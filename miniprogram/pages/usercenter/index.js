@@ -1,4 +1,5 @@
 // page/myCenter/index.js
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -52,7 +53,59 @@ Page({
 					   method: 'GET',
 					   header: { 'content-type': 'application/json'},
 					   success: function(openIdRes){
-							console.info("登录成功返回的openId：" + openIdRes.data.openid);
+              console.info("登录成功返回的openId的值名是：" + openIdRes.data.openid);
+              db.collection('love_book').where({
+                _openid: openIdRes.data.openid,
+                type:1
+              })
+              .get({
+                success: function(res) {
+                  // res.data 是包含以上定义的两条记录的数组
+                  console.log(res.data,'111')
+                  if(res.data.length==0){
+                    db.collection('love_book').add({
+                      // data 字段表示需新增的 JSON 数据
+                      data: {
+                        giftBookName:'默认收礼',
+                        giftBookDate:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),
+                        giftBookDesc:'系统默认的收礼礼簿',
+                        type:1,
+                        children:[]
+                      },
+                      success: function(res) {
+                        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+                        console.log(res)
+                      }
+                    })
+                  }
+                }
+              })
+              db.collection('love_book').where({
+                _openid: openIdRes.data.openid,
+                type:2
+              })
+              .get({
+                success: function(res) {
+                  // res.data 是包含以上定义的两条记录的数组
+                  console.log(res.data,'2222')
+                  if(res.data.length==0){
+                    db.collection('love_book').add({
+                      // data 字段表示需新增的 JSON 数据
+                      data: {
+                        giftBookName:'默认送礼',
+                        giftBookDate:new Date().getFullYear()+'-'+((new Date().getMonth()+1<10?'0'+(new Date().getMonth()+1):new Date().getMonth()+1))+'-'+new Date().getDate(),
+                        giftBookDesc:'系统默认的送礼礼簿',
+                        type:2,
+                        children:[]
+                      },
+                      success: function(res) {
+                        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+                        console.log(res)
+                      }
+                    })
+                  }
+                }
+              })
 					   },
 					   fail: function(error) {
 						   console.info("获取用户openId失败");

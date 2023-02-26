@@ -3,7 +3,7 @@
         <view class="form_label">
             礼簿
         </view>
-        <input class="weui-input" bindinput="bindChangeName" value="{{createName}}" placeholder="请输入" />
+        <input class="weui-input" style="width: calc(100% - 186rpx);" bindinput="bindChangeName" value="{{createName}}" placeholder="请输入" />
     </view>
     <view class="form_item">
         <view class="form_label">
@@ -19,7 +19,7 @@
         <view class="form_label text_area">
             备注
         </view>
-        <textarea bindinput="bindChangeDesc" value="{{createDesc}}" maxlength='200' placeholder="自动变高" />
+        <textarea bindinput="bindChangeDesc" value="{{createDesc}}" maxlength='200' placeholder="请输入备注" />
         <view class="form_desNum">
             {{descLength}}/200
         </view>

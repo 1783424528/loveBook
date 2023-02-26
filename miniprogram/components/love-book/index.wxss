@@ -56,11 +56,19 @@
 	font-weight: 700;
 	color: #1A2A43;
 }
+.date_title{
+	text-align:start;
+	font-size: 10px;
+	color: #959CBA;
+}
 
 .data_list .book_text {
 	font-size: 30rpx;
 	color: #959CBA;
 	padding: 6rpx 0;
+	overflow: hidden;  
+	white-space: nowrap; 
+	text-overflow: ellipsis; 
 }
 
 .data_list .book_money {
@@ -72,7 +80,7 @@
 }
 
 .data_list .book_user {
-	text-align: end;
+	float: right;
 }
 
 .data_list .bookLoved_content {
@@ -95,9 +103,14 @@
 
 }
 
-.mask-content {
-	z-index: 1000;
-	position: absolute;
+.mask-content-edit {
+	border-radius: 60rpx;
+	background-color: white;
+	margin-right: 10px;
+	/* opacity: 1; */
+}
+.mask-content-del {
+	margin-left: 10px;
 	border-radius: 60rpx;
 	background-color: white;
 	/* opacity: 1; */
@@ -106,4 +119,7 @@
 .mask-img {
 	width: 40px;
 	height: 40px;
+}
+.mask-content-all{
+	display: flex;
 }
