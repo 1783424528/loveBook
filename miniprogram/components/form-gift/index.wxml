@@ -41,7 +41,7 @@
         <view class="form_label text_area">
             备注
         </view>
-        <textarea bindinput="bindDesChange" value="{{giftDes}}" maxlength='200' placeholder="自动变高" />
+        <textarea bindinput="bindDesChange" value="{{giftDes}}" maxlength='200' placeholder="请输入备注" />
         <view class="form_desNum">
             {{desLength}}/200
         </view>
